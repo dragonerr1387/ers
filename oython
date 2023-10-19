@@ -1,0 +1,123 @@
+class person :
+    def __init__(self,name,username,password,email):
+        self.name = name
+        self.username = username
+        self.password = password
+        self.email = email
+
+
+class manager (person):
+    def __init__(self,name,username,password,email,pin_code):
+        super().__init__(name,username,password,email)
+        self.pin_code = pin_code
+
+
+class worker (person):
+    def __init__(self, name, username, password, email ,worker_ID):
+        super().__init__(name, username, password, email)
+        self.worker_ID = worker_ID
+
+
+print("_-_-_-_-_-MENU_-_-_-_-_-")
+print("welcome to book store")
+print("who are you?")
+print("1_a person")
+print("2_a manager")
+print("3_a worker")
+item = eval(input("1 or 2 or 3:"))
+if item == 1:
+    item1 = input("do you have an account ?  yes/no:")
+    if item1 == "yes":
+
+        inp = input("please enter your user name and password like name:username:password:email:")
+
+        f = open("database.txt","r")
+        data = f.read()
+        l = data.split()
+        f.close()
+        if inp not in l:
+
+            print("sorry you dont have account please sign up first")
+
+
+        else:
+            print(f"welcome {inp}")
+            while 2 < 10:
+                inp2 = input("wright your book name here:")
+                inp3 = input("what is your user name:")
+                fi = open("database2.txt","a")
+                fi.write(inp2 + ":" + inp3 + "\n")
+                fi.close()
+    elif item1 == "no":
+        name = input("enter your name:")
+        username = input("enter your username:")
+        password = input("enter your password:")
+        email = input("enter your email")
+        fiii = open("database.txt","r")
+        data = fiii.read()
+        l = data.split()
+        fiii.close()
+        if name+":"+username+":"+password+":"+email not in l:
+            f = open("database.txt","a")
+            f.write(name+":"+username+":"+password+":"+email)
+            f.close()
+            print("account created")
+        else:
+            print("sorry this username and password is in use")
+elif item == 2:
+    print("hi dear admin")
+    name = input("enter your name")
+    username = input("enter your username")
+    password = input("enter your password")
+    email = input("enter your email")
+    pin_code = input("please enter your pincode")
+    if username=="admin" and pin_code=="123456" and password=="889076":
+        print("welcome to your panel dear admin ;)")
+        print("1_read database1")
+        print("2_read database2")
+        print("3_read database3")
+        ji = input("choose an item:")
+        if ji == "1":
+            fo = open("database.txt","r")
+            date = fo.read()
+            li = date.split()
+            print(li)
+        elif ji == "2":
+            fo = open("database2.txt","r")
+            date = fo.read()
+            li = date.split()
+            print(li)
+        elif ji == "3":
+            fo = open("database3.txt", "r")
+            date = fo.read()
+            li = date.split()
+            print(li)
+elif item == 3:
+    print("hi dear worker")
+    name = input("enter your name:")
+    username = input("enter your username:")
+    password = input("enter your password:")
+    email = input("enter your email:")
+    filo = open("database3.txt","r")
+    dara = filo.read()
+    lam = dara.split()
+    filo.close()
+
+    if name+":"+username+":"+password+":"+email not in lam:
+        print("sorry we dont have any account like that")
+    else:
+        print(f"welcome {name}")
+        fhile = open("database2.txt","r")
+        dave = fhile.read()
+        land = dave.split()
+        fhile.close()
+        print(f"the {len(land)} is buying book")
+        print(land)
+
+
+#######################################THE END.#######################################
+
+
+
+
+
